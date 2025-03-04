@@ -11,6 +11,8 @@ const ChatPage = ({ userName, onLogout }) => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
+        const socket = io(SOCKET_URL, { autoConnect: true });
+
         const fetchMessages = async () => {
             const data = await getMessages();
             setMessages(data.data);
@@ -19,6 +21,7 @@ const ChatPage = ({ userName, onLogout }) => {
         fetchMessages();
 
         socket.on('message', (message) => {
+            console.log('New message received:', message);
             setMessages((prev) => [...prev, message]);
         });
 
@@ -35,7 +38,8 @@ const ChatPage = ({ userName, onLogout }) => {
             timeStamp: new Date().toISOString(),
         };
         await sendMessage(messageData);
-        socket.emit('message', messageData);
+        socket.emit('sendMessage', messageData);
+        setMessages((prev) => [...prev, messageData]);
     };
 
     const handleLogout = () => {

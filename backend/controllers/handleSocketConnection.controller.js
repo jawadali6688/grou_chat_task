@@ -8,6 +8,7 @@ const handleSocketConnection = (socket, io) => {
 
   // On New Message
   socket.on('sendMessage', async (message) => {
+    console.log(message)
     const { userId, userName, messageBody } = message;
     const timeStamp = new Date();
     

@@ -17,7 +17,7 @@ const MessageList = ({ messages, currentUser }) => (
                 </div>
                 {/* Timestamp (Optional) */}
                 <div className="text-xs text-gray-300 mt-1 text-right">
-                    {new Date(msg.timeStamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    {msg.createdAt}
                 </div>
             </div>
         ))}

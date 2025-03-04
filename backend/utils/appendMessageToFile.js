@@ -1,11 +1,11 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
+import fs from 'fs/promises';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const filePath = path.join(__dirname, '../messages.json');
-
 
 // Append Message to JSON File (Async Approach)
 const appendMessageToFile = async (message) => {
@@ -17,6 +17,7 @@ const appendMessageToFile = async (message) => {
       const fileData = await fs.readFile(filePath, 'utf-8');
       messages = JSON.parse(fileData);
     } catch (error) {
+      console.log(error)
       if (error.code !== 'ENOENT') {
         console.error('Error reading file:', error.message);
         return;
@@ -32,6 +33,7 @@ const appendMessageToFile = async (message) => {
     await fs.writeFile(filePath, JSON.stringify(messages, null, 2), 'utf-8');
     console.log('Message appended to messages.json');
   } catch (error) {
+    console.log(error)
     console.error('Error writing message to file:', error.message);
   }
 };

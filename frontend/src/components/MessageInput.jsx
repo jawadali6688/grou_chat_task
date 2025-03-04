@@ -12,7 +12,7 @@ const MessageInput = ({ onSendMessage }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex items-center p-2 bg-white border-t-2 border-secondary">
+        <form onSubmit={handleSubmit} className="flex items-center p-2 border-t-2 border-secondary">
             <input
                 type="text"
                 placeholder="Type a message..."
@@ -22,7 +22,7 @@ const MessageInput = ({ onSendMessage }) => {
             />
             <button
                 type="submit"
-                className="ml-2 bg-primary text-white px-4 py-2 rounded-md hover:bg-orange-600"
+                className="ml-2 bg-gray-900 text-white px-4 py-2 rounded-md hover:bg-orange-600"
             >
                 Send
             </button>
